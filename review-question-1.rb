@@ -59,7 +59,55 @@ pokemon = [
   ]
 }
 ]
+def get_bulba_url
+  pokemon.each do |pokemon|
+    if poke[:name] == "bulbasaur"
+      return poke[:abilities][0][:ability][:url]
+    end
+  end
+  puts "Bulbasaur's url #{get_bulba_url(pokemon)}"
 
+  def pokemon_exp(pokemon)
+    pokemon.find do |poke|
+      poke[:base_experience] > 40
+    end
+      [:name]
+  end
+
+    puts " First pokemon with >40 base exp: #{pokemon_exp(pokemon)}"
+
+    def all_pokemon_exp(pokemon)
+      pokemon.map do |poke|
+        if poke[:base_experience] > 40
+        poke[:name]
+        end
+      end
+    end
+
+      puts " All pokemon with >40 base exp: #{all_pokemon_exp(pokemon)}"
+
+      def all_poke_names(pokemon)
+        pokemon.map do |poke|
+          poke[:name]
+        end
+      end
+
+        puts " All pokemon names: #{all_poke_names(pokemon)}"
+
+        def heavy_pokemon(pokemon)
+          pokemon.select do |poke|
+            poke[:weight] > 60
+          end.map { |poke| poke[:name]}
+        end
+
+        puts "Pokemon with >60 weight #{heavy_pokemon(pokemon)}"
+
+        def pokemon_exists(pokemon, pokemon_name)
+          pokemon.any? do |poke|
+            poke[:name] == name
+          end
+        end
+        puts "Does pokemon exist?: #{pokemon_exists(pokemon, pokemon_name)}"
 
 # How would you get the url for Bulbasaur's ability?
 # How would you return the first pokemon with base experience over 40?
